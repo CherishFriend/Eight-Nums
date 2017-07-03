@@ -27,6 +27,8 @@ public class NineNumsGUI{
 	/*
 	侧边栏
 	**/
+	private JPanel infoPane;
+	private JPanel buttonPane;
 	private JPanel resetPane;
 	private JPanel sizePane;
 	private JButton size;
@@ -44,7 +46,11 @@ public class NineNumsGUI{
 		frame.setSize(400,350);
 		frame.setLayout(new BorderLayout(5,5));
 
-
+		/*
+		设置图片
+		**/
+		ImageIcon titlePic = new ImageIcon("1.jpg");
+		Image smallImage = titlePic.getImage().getScaledInstance(60,40,Image.SCALE_FAST);
 		/*
 		菜单栏
 		**/
@@ -55,7 +61,7 @@ public class NineNumsGUI{
 		menubar.add(gameMenu);
 		menubar.add(helpMenu);
 
-		sideBar = new JPanel(new GridLayout(5,1));
+		sideBar = new JPanel(new BorderLayout(10,10));
 		mainBar = new JPanel(new GridLayout(3,3,5,10));
 		counterBar = new JPanel();
 		/*
@@ -78,6 +84,8 @@ public class NineNumsGUI{
 
 		mainBar.setBorder(border);
 		//侧边栏
+		infoPane = new JPanel(new GridLayout(2,1));
+		buttonPane = new  JPanel(new GridLayout(3,1));
 		resetPane = new JPanel(new FlowLayout());
 		sizePane = new JPanel(new FlowLayout());
 		time = new JLabel("时间");
@@ -87,14 +95,15 @@ public class NineNumsGUI{
 		
 		resetPane.add(reset);
 		sizePane.add(size);
+		infoPane.add(steps);
+		infoPane.add(time);
+		infoPane.setBorder(border);
 
-
-		sideBar.add(steps);
-		sideBar.add(time);
-		sideBar.add(new JLabel(" "));
-		sideBar.add(sizePane);
-		sideBar.add(resetPane);
-		sideBar.setBorder(border);
+		buttonPane.add(size);
+		buttonPane.add(new JLabel(" "));
+		buttonPane.add(reset);
+		sideBar.add(BorderLayout.CENTER,infoPane);
+		sideBar.add(BorderLayout.SOUTH,buttonPane);
 
 
 		/*
@@ -102,6 +111,8 @@ public class NineNumsGUI{
 		**/
 		side = new JLabel("       ");
 		bottom = new JLabel(" ");
+
+		frame.setIconImage(smallImage);
 		frame.add(BorderLayout.NORTH,menubar);
 		frame.add(BorderLayout.CENTER,mainBar);
 		frame.add(BorderLayout.EAST,sideBar);
