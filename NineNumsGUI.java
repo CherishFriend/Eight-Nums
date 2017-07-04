@@ -48,6 +48,7 @@ public class NineNumsGUI {
 	/*
 	侧边栏
 	**/
+	int model;
 	int step;
 	Calendar beginTime;
 	Thread threadTime;
@@ -155,6 +156,7 @@ public class NineNumsGUI {
 		mainBar.setBorder(border);
 		//侧边栏
 		step = 0;
+		model = 1;
 		//第一张卡片 gameModel
 		myCardLayout = new CardLayout();
 		cardSwitch = new JPanel(myCardLayout);
@@ -260,14 +262,21 @@ public class NineNumsGUI {
 		});
 		switchItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("执行");
 				myCardLayout.next(cardSwitch);
-				System.out.println("执行完毕");
+				if(model == 1){
+					model = 2;
+				}else{
+					model = 1;
+				}
 			}
 		});
 		recordItemm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(model == 1){
 
+				}else{
+					
+				}
 			}
 		});
 		helpItem.addActionListener(new ActionListener() {
